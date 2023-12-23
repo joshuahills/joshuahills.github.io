@@ -6,6 +6,7 @@ import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 
 import './blog.css';
+import { Image } from 'astro:assets';
 type Props = CollectionEntry<'blog'>['data'];
 
 const { title, description, pubDate, updatedDate, heroImage, heroImageAlt, author } = Astro.props;
@@ -55,7 +56,7 @@ const { title, description, pubDate, updatedDate, heroImage, heroImageAlt, autho
 		<main>
 			<article class="blog-post">
 				<div class="hero-image">
-					{heroImage && <img width={1020} height={510} src={"/" + heroImage} alt={heroImageAlt} />}
+					{heroImage && <Image width={1020} height={510} src={heroImage} alt={heroImageAlt} />}
 				</div>
 				<div class="prose text-white">
 					<div class="title">
