@@ -7,6 +7,19 @@ thumbnailImageAlt: 'EF Core For Junior Devs #1'
 author: Josh Hills
 ---
 
+## Contents <!-- omit in toc -->
+
+- [Background](#background)
+- [Introduction](#introduction)
+- [EF vs. EF Core](#ef-vs-ef-core)
+- [Database Providers](#database-providers)
+
+## Background
+
+Hey, I'm Josh. I'm a software engineer who works with Entity Framework Core every day at work and in personal projects. I spent two years as a grad, and found EF Core to be one of the most difficult things to understand initially as a junior dev. It's incredibly powerful, but I find it very easy to go wrong and there are not many protections built in to prevent you from doing so. I've spent a lot of time learning EF Core, the common pitfalls and traps people fall into and doing some important query optimisations to speed up our applications. So, I'm writing this series of posts to share some of this knowledge in language any dev should find easy enough to comprehend. I'm neither a writer nor an expert though, so please create issues and/or PRs on this [GitHub repo](https://github.com/joshuahills/joshuahills.github.io) if you find any content to be incorrect, out-of-date, or difficult to understand.
+
+I believe this kind of learning is not something you can achieve solely by reading posts like these, but it should help you. I'll cover as much as I can, with realistic examples. Let's get started.
+
 ## Introduction
 
 Entity Framework (EF) Core is an ORM - an "object relational mapper" - for .NET. What does that mean? Well, EF Core sits as a layer between your application and the database. It maps database entities to objects for you to use in your application, and vice versa.
@@ -15,7 +28,7 @@ There are two approaches that EF Core supports: "code-first" and "database-first
 
 We'll cover the code-first approach as that is most common.
 
-## EF vs EF Core
+## EF vs. EF Core
 
 An important point to make before going any further is that there are two different things that share the Entity Framework name. The original "Entity Framework" as it is formally known, is no longer under active development. That means no new features are being added. Its final version is version 6 (first released in 2013!), so it is also known as EF6. The latest EF6 version is still supported by Microsoft however, meaning they will provide security fixes until this support ends. As of writing, there are [no plans to end this support](https://learn.microsoft.com/en-us/ef/efcore-and-ef6/support#entity-framework-60-61-62-63-and-64).
 
