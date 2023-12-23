@@ -1,0 +1,19 @@
+---
+import DarkModeToggle from './DarkModeToggle.astro';
+import HeaderLink from './HeaderLink.astro';
+---
+
+<header>
+	<nav class="dark:bg-gray-800 dark:text-white text-zinc-900 bg-gray-50">
+		<div class="container mx-auto flex justify-between h-16 items-center">
+			<div class="space-x-4 flex">
+				<HeaderLink href="/">Home</HeaderLink>
+				<HeaderLink href="/blog">Blog</HeaderLink>
+			</div>
+			<div class="ml-auto">
+				<DarkModeToggle></DarkModeToggle>
+			</div>
+		</div>
+	</nav>
+	
+</header>
