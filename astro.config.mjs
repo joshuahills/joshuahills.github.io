@@ -4,6 +4,6 @@ import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
-  site: 'https://joshuahills.github.io',
+  site: 'https://joshhills.co.uk',
   integrations: [mdx(), sitemap(), tailwind()]
 });
