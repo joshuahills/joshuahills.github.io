@@ -1,0 +1,7 @@
+---
+const { text, backgroundColour, textColour } = Astro.props;
+---
+
+<span class="inline-block rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2" class:list={[backgroundColour, textColour]}>
+	{text}
+</span>

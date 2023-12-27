@@ -5,13 +5,18 @@ import Footer from '../../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../../components/FormattedDate.astro';
+import Pill from '../../components/Pill.astro';
+import { Tag } from '../../content/config';
 
 const posts = (await getCollection('blog'))
 	.filter((post) => post.data.status === 'published' || import.meta.env.DEV)
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const tagsColoursMap = new Map([
+	[Tag.Values['EF Core'], { backgroundColour: 'bg-purple-100 dark:bg-purple-900', textColour: 'text-purple-600 dark:text-purple-300' }],
+])
 ---
 
-<!doctype html>
 <html lang="en">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
@@ -27,39 +32,12 @@ const posts = (await getCollection('blog'))
 			ul li {
 				width: calc(50% - 1rem);
 			}
-			ul li:first-child {
-				width: 100%;
-				margin-bottom: 1rem;
-				text-align: center;
-			}
-			ul li:first-child img {
-				width: 100%;
-			}
-			ul li:first-child .title {
-				font-size: 2.369rem;
-			}
-			ul li img {
-				margin-bottom: 0.5rem;
-				border-radius: 12px;
-			}
 			ul li a {
 				display: block;
 			}
 			.title {
 				margin: 0;
-				color: rgb(var(--black));
 				line-height: 1;
-			}
-			.date {
-				margin: 0;
-				color: rgb(var(--gray));
-			}
-			ul li a:hover h4,
-			ul li a:hover .date {
-				color: rgb(var(--accent));
-			}
-			ul a:hover img {
-				box-shadow: var(--box-shadow);
 			}
 			@media (max-width: 720px) {
 				ul {
@@ -69,16 +47,10 @@ const posts = (await getCollection('blog'))
 					width: 100%;
 					text-align: center;
 				}
-				ul li:first-child {
-					margin-bottom: 0;
-				}
-				ul li:first-child .title {
-					font-size: 1.563em;
-				}
 			}
 		</style>
 	</head>
-	<body class="dark:bg-gray-900 dark:text-gray-100 bg-gray-100">
+	<body>
 		<Header />
 		<main>
 			<div class="container mx-auto px-3 py-5 flex max-w-4xl">
@@ -97,15 +69,15 @@ const posts = (await getCollection('blog'))
 							posts.map((post) => (
 								<li>
 									<a href={`/blog/${post.slug}/`}>
-										{import.meta.env.DEV && post.data.status !== 'published' && (
-											<div class="bg-yellow-200 text-yellow-900 p-3 rounded-md">
-												<p class="text-sm font-semibold text-center">DRAFT</p>
-											</div>
-										)}
-										<h4 class="title">{post.data.title}</h4>
-										<p class="date">
-											<FormattedDate date={post.data.pubDate} />
-										</p>
+										<div class="bg-gradient-to-b dark:from-gray-900 dark:to-slate-800 border from-gray-50 to-slate-50 border-gray-200 dark:border-gray-600 rounded-xl p-8 relative overflow-clip">
+											<h4 class="title pb-2 text-xl">{post.data.title}</h4>
+											{post.data.tags?.map((tag => 
+												<Pill text={tag} backgroundColour={tagsColoursMap.get(tag)?.backgroundColour} textColour={tagsColoursMap.get(tag)?.textColour} />))}
+												<p class="date">
+													<FormattedDate date={post.data.pubDate} />
+													</p>
+											<div class="absolute w-40 h-40 bg-purple-500 rounded-full top-1/4 left-3/4 opacity-15 blur-xl bg-blend-lighten"></div>
+										</div>
 									</a>
 								</li>
 							))

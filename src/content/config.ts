@@ -1,5 +1,7 @@
 import { defineCollection, z } from 'astro:content';
 
+export const Tag = z.enum(['EF Core']);
+
 const blog = defineCollection({
 	type: 'content',
 	schema: ({ image }) => z.object({
@@ -10,6 +12,7 @@ const blog = defineCollection({
 		thumbnailImage: image().optional(),
 		author: z.string(),
 		status: z.enum(['draft', 'published']),
+		tags: z.array(Tag).optional(),
 	}),
 });
 

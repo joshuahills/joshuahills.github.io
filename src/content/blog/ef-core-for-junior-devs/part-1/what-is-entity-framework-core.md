@@ -5,6 +5,7 @@ pubDate: '2023-12-23'
 thumbnailImage: './thumbnail.png'
 author: Josh Hills
 status: draft
+tags: []
 ---
 
 - [Background](#background)
