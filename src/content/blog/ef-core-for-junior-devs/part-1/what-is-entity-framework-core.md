@@ -3,11 +3,9 @@ title: 'EF Core For Junior Devs: #1 - What is Entity Framework Core?'
 description: 'EF Core For Junior Devs #1'
 pubDate: '2023-12-23'
 thumbnailImage: './thumbnail.png'
-thumbnailImageAlt: 'EF Core For Junior Devs #1'
 author: Josh Hills
+status: draft
 ---
-
-## Contents <!-- omit in toc -->
 
 - [Background](#background)
 - [Introduction](#introduction)

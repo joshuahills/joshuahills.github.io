@@ -2,7 +2,7 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { SITE_TITLE, SITE_DESCRIPTION, TWITTER_URL, LINKEDIN_URL, GITHUB_URL, EMAIL_ADDRESS } from '../consts';
 
 const telentTechnologies = ['.NET 6 to 8+', 'ASP.NET Core', 'Entity Framework Core', '.NET Framework', 'Angular', 'TypeScript', 'MS SQL Server'];
 const createAngularAppTechnologies = ['Angular', 'TypeScript', 'Tailwind'];
@@ -19,17 +19,38 @@ const personalWebsiteTechnologies = ['Astro', 'TypeScript', 'Tailwind'];
 			<div class="container mx-auto px-3 py-5 flex max-w-4xl">
 				<div class="flex md:flex-row flex-col mx-auto">
 					<div class="basis-1/3">
-						<img src="/headshot.png" alt="Josh's headshot" class="mx-auto max-h-64 rounded-full" />
+						<img src="/headshot.png" alt="Portrait image" class="mx-auto max-h-64 rounded-full" />
 						<div class="flex flex-col items-center gap-2">
 							<h1 class="text-3xl pt-4">Josh Hills</h1>
-							<a class="text-blue-600 dark:text-blue-500 hover:underline" href="mailto:josh@joshhills.co.uk">josh@joshhills.co.uk</a>
+							<div class="flex flex-col gap-2">
+								<span>
+									<i class="bi bi-briefcase"></i>
+									<span class="pl-1"><a href="https://telent.com" target="_blank">Telent</a></span>
+								</span>
+								<span>
+									<i class="bi bi-envelope"></i>
+									<span class="pl-1"><a href={`mailto:${EMAIL_ADDRESS}`} target="_blank">josh@joshhills.co.uk</a></span>
+								</span>
+								<span>
+									<i class="bi bi-twitter-x"></i>
+									<span class="pl-1"><a href={TWITTER_URL} target="_blank">joshhills99</a></span>
+								</span>
+								<span>
+									<i class="bi bi-github"></i>
+									<span class="pl-1"><a href={GITHUB_URL} target="_blank">joshuahills</a></span>
+								</span>
+								<span>
+									<i class="bi bi-linkedin"></i>
+									<span class="pl-1"><a href={LINKEDIN_URL} target="_blank">joshuahills99</a></span>
+								</span>
+							</div>
 						</div>
 					</div>
 					<div class="justify-center gap-3 basis-2/3 max-w-screen-md">
 						<div class="p-3">
 							<h2 class="text-2xl underline decoration-sky-400 decoration-2 underline-offset-2 pb-2">Overview</h2>
 							<p>
-								I'm a passionate software engineer, currently working at <a href="https://www.telent.com">Telent</a> in Warwick, UK.
+								I'm a passionate software engineer, currently working at <a class="text-sky-300" href="https://www.telent.com">Telent</a> in Warwick, UK.
 							</p>
 							<p>
 								I work with .NET (C#), TypeScript, Angular, and Microsoft SQL Server.
@@ -39,7 +60,7 @@ const personalWebsiteTechnologies = ['Astro', 'TypeScript', 'Tailwind'];
 						<div class="p-3">
 							<h2 class="text-2xl underline decoration-blue-400 decoration-2 underline-offset-2 pb-2">Experience</h2>
 							<p class="text-xl font-semibold pb-1">
-								<a href="https://telent.com" class="pb-2 inline-flex items-center hover:text-blue-500">
+								<a href="https://telent.com" class="pb-2 inline-flex items-center">
 								Telent Technology Services
 								</a>
 							</p>
@@ -103,7 +124,7 @@ const personalWebsiteTechnologies = ['Astro', 'TypeScript', 'Tailwind'];
 								</span>
 							))}
 							<p>
-								This website and blog. Created with <a class="text-indigo-500" href="https://astro.build/">Astro</a>.
+								This website and blog. Created with <a class="text-indigo-300" href="https://astro.build/">Astro</a>.
 							</p>
 						</div>
 				</div>

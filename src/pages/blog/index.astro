@@ -5,13 +5,10 @@ import Footer from '../../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../../components/FormattedDate.astro';
-import { Image } from 'astro:assets';
 
-const posts = (await getCollection('blog')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
-
-const images = import.meta.glob('/src/assets/*.{jpeg,jpg,png,gif}')
+const posts = (await getCollection('blog'))
+	.filter((post) => post.data.status === 'published' || import.meta.env.DEV)
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
 <!doctype html>
@@ -85,13 +82,26 @@ const images = import.meta.glob('/src/assets/*.{jpeg,jpg,png,gif}')
 		<Header />
 		<main>
 			<div class="container mx-auto px-3 py-5 flex max-w-4xl">
-				<section class="">
+				{
+					posts.length === 0 &&
+					import.meta.env.PROD &&
+					(
+						<div class="text-center block m-auto">
+							<h4 class="text-2xl">No posts yet</h4>
+						</div>	
+					)
+				}
+				<section>
 					<ul>
 						{
 							posts.map((post) => (
 								<li>
 									<a href={`/blog/${post.slug}/`}>
-										<Image width={720} height={360} src={post.data.thumbnailImage} alt={post.data.thumbnailImageAlt} />
+										{import.meta.env.DEV && post.data.status !== 'published' && (
+											<div class="bg-yellow-200 text-yellow-900 p-3 rounded-md">
+												<p class="text-sm font-semibold text-center">DRAFT</p>
+											</div>
+										)}
 										<h4 class="title">{post.data.title}</h4>
 										<p class="date">
 											<FormattedDate date={post.data.pubDate} />

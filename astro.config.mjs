@@ -3,7 +3,7 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 
-import { externalLink } from './src/external-link';
+import { externalLink } from './src/plugins/external-link';
 
 export default defineConfig({
   site: 'https://joshhills.co.uk',
