@@ -70,6 +70,9 @@ const tagsColoursMap = new Map([
 								<li>
 									<a href={`/blog/${post.slug}/`}>
 										<div class="bg-gradient-to-b dark:from-gray-900 dark:to-slate-800 border from-gray-50 to-slate-50 border-gray-200 dark:border-gray-600 rounded-xl p-8 relative overflow-clip">
+											{import.meta.env.DEV && post.data.status !== 'published' && (
+												<Pill text={post.data.status} backgroundColour="bg-yellow-200 text-yellow-900" textColour="text-white" />
+											)}
 											<h4 class="title pb-2 text-xl">{post.data.title}</h4>
 											{post.data.tags?.map((tag => 
 												<Pill text={tag} backgroundColour={tagsColoursMap.get(tag)?.backgroundColour} textColour={tagsColoursMap.get(tag)?.textColour} />))}
