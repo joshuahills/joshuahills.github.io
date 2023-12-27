@@ -54,7 +54,7 @@ const personalWebsiteTechnologies = ['Astro', 'TypeScript', 'Tailwind'];
 						<div class="p-3">
 							<h2 class="text-3xl underline decoration-sky-400 decoration-2 underline-offset-2 pb-2">Overview</h2>
 							<p>
-								I'm a passionate software engineer, currently working at <a class="text-sky-300" href="https://www.telent.com">Telent</a> in Warwick, UK.
+								I'm a passionate software engineer, currently working at <a class="dark:text-sky-300 text-sky-500 font-semibold" href="https://www.telent.com">Telent</a> in Warwick, UK.
 							</p>
 							<p>
 								I work with .NET (C#), TypeScript, Angular, and Microsoft SQL Server.
@@ -65,7 +65,7 @@ const personalWebsiteTechnologies = ['Astro', 'TypeScript', 'Tailwind'];
 							<h2 class="text-3xl underline decoration-blue-400 decoration-2 underline-offset-2 pb-2">Experience</h2>
 							<p class="text-2xl font-semibold pb-1">
 								<a href="https://telent.com" class="pb-2 inline-flex items-center">
-								Telent Technology Services
+									Telent Technology Services
 								</a>
 							</p>
 							{telentTechnologies.map((technology) =>
@@ -101,9 +101,9 @@ const personalWebsiteTechnologies = ['Astro', 'TypeScript', 'Tailwind'];
 						<hr class="my-4 mx-20 h-0.5 border-0 dark:bg-gray-700 bg-gray-300">
 						<div class="p-3">
 							<h2 class="text-3xl underline decoration-indigo-600 decoration-2 underline-offset-2 pb-2">Projects</h2>
-							<p class="text-xl font-semibold pb-1">
-								<a href="https://github.com/joshuahills/create-angular-app" class="pb-2 inline-flex items-center hover:text-blue-500">
-								create-angular-app
+							<p class="text-2xl font-semibold pb-1">
+								<a href="https://github.com/joshuahills/create-angular-app" class="pb-2 inline-flex items-center">
+									create-angular-app
 								</a>
 							</p>
 							{createAngularAppTechnologies.map((technology) =>
@@ -113,16 +113,16 @@ const personalWebsiteTechnologies = ['Astro', 'TypeScript', 'Tailwind'];
 								A CLI tool for generating very opinionated Angular applications with Tailwind and a set of recommended ESLint rules.
 								Reduces the boilerplate and time required to set up a new Angular application with the configuration I always use.
 							</p>
-							<p class="text-xl font-semibold pt-2">
-								<a href="/" class="pb-2 inline-flex items-center hover:text-blue-500">
-								Personal Website
+							<p class="text-2xl font-semibold pt-2">
+								<a href="/" class="pb-2 inline-flex items-center">
+									Personal Website
 								</a>
 							</p>
 							{personalWebsiteTechnologies.map((technology) =>
 								<Pill text={technology} backgroundColour="bg-indigo-100 dark:bg-indigo-900" textColour="text-indigo-600 dark:text-indigo-300"/>
 							)}
 							<p>
-								This website and blog. Created with <a class="text-indigo-300" href="https://astro.build/">Astro</a>.
+								This website and blog. Created with <a class="text-indigo-500 dark:text-indigo-300 font-semibold" href="https://astro.build/">Astro</a>.
 							</p>
 						</div>
 				</div>
