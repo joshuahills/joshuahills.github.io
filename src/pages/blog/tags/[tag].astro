@@ -14,7 +14,7 @@ export async function getStaticPaths() {
 		.filter(post => post.data.status === 'published' || import.meta.env.DEV)
 		.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 	
-  return Tag.options.map((tag: string) => ({ params: { tag }, props: { allPosts: allPosts } }));
+  return Tag.options.map(tag => ({ params: { tag }, props: { allPosts: allPosts } }));
 }
 
 const { tag } = Astro.params;
