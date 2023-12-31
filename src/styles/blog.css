@@ -1,37 +1,25 @@
 h1 {
-	font-size: 3.052em;
+	font-size: 2.75em;
 }
 
 h2 {
-	font-size: 2.441em;
+	font-size: 2.5em;
 }
 
 h3 {
-	font-size: 1.953em;
+	font-size: 2em;
 }
 
 h4 {
-	font-size: 1.563em;
+	font-size: 1.5em;
 }
 
 h5 {
 	font-size: 1.25em;
 }
 
-.hero-image {
-	width: 100%;
-}
-
-.hero-image img {
-	display: block;
-	margin: 0 auto;
-	border-radius: 12px;
-	box-shadow: var(--box-shadow);
-}
-
 .prose {
-	width: 720px;
-	max-width: calc(100% - 2em);
+	width: 960px;
 	margin: auto;
 	padding: 1em;
 	color: rgb(var(--gray-dark));
@@ -80,7 +68,19 @@ input {
 }
 
 table {
-	width: 1000px;
+	width: 100%;
+	border-collapse: collapse;
+	margin-bottom: 2em;
+}
+
+th, td {
+	border: 1px solid #ddd;
+	padding: 8px;
+	text-align: left;
+}
+
+td {
+	padding: 10px 10px;
 }
 
 img {
@@ -139,6 +139,17 @@ article ul {
 		font-size: 18px;
 	}
 	main {
-		padding: 1em;
+		padding: 0em;
+	}
+	.prose {
+		width: 100%;
+		max-width: 100%;
+	}
+	table {
+		overflow-x: scroll;
+		display: block;
+	}
+	article {
+		width: 100%;
 	}
 }
