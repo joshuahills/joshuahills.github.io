@@ -65,7 +65,7 @@ const { title, description, pubDate, updatedDate, author, status } = Astro.props
 				</div>
 			}
 			{
-				status === 'published' || import.meta.env.DEV &&
+				(status === 'published' || import.meta.env.DEV) &&
 				<article class="blog-post">
 					<div class="prose text-white">
 						<div class="title">
