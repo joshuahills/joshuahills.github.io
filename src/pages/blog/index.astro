@@ -6,15 +6,11 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../../components/FormattedDate.astro';
 import Pill from '../../components/Pill.astro';
-import { Tag } from '../../content/config';
+import { tagsColoursMap } from './tag-colour-map';
 
 const posts = (await getCollection('blog'))
-	.filter((post) => post.data.status === 'published' || import.meta.env.DEV)
+	.filter((post) => post.data.status === 'published' )
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-
-const tagsColoursMap = new Map([
-	[Tag.Values['EF Core'], { backgroundColour: 'bg-purple-100 dark:bg-purple-900', textColour: 'text-purple-600 dark:text-purple-300' }],
-])
 ---
 
 <html lang="en">
@@ -50,33 +46,37 @@ const tagsColoursMap = new Map([
 	<body>
 		<Header />
 		<main>
-			<div class="container mx-auto px-3 py-5 flex max-w-4xl">
+			<div class="container mx-auto px-3 py-5 flex flex-col max-w-4xl">
+				<h4 class="text-center text-3xl pb-2">Latest posts</h4>
 				{
 					posts.length === 0 &&
 					import.meta.env.PROD &&
 					(
 						<div class="text-center block m-auto">
-							<h4 class="text-2xl">No posts yet</h4>
+							<h4 class="text-2xl">No posts yet...</h4>
 						</div>	
 					)
 				}
-				<section>
+				<section class="w-full">
 					<ul>
 						{
 							posts.map((post) => (
 								<li>
 									<a href={`/blog/${post.slug}/`}>
-										<div class="bg-gradient-to-b dark:from-gray-900 dark:to-slate-800 border from-gray-50 to-slate-50 border-gray-200 dark:border-gray-600 rounded-xl p-8 relative overflow-clip">
-											<h4 class="title pb-2 text-xl">{post.data.title}</h4>
-											{post.data.tags?.slice(0, 3).map((tag => 
-												<Pill text={tag} backgroundColour={tagsColoursMap.get(tag)?.backgroundColour} textColour={tagsColoursMap.get(tag)?.textColour} />))}
-												<p class="date">
-													<FormattedDate date={post.data.pubDate} />
-													{import.meta.env.DEV && post.data.status !== 'published' &&
+										<div class="bg-gradient-to-b dark:from-gray-900 dark:to-slate-800 border from-gray-100 border-gray-200 dark:border-gray-600 rounded-xl p-8 relative overflow-clip">
+											<h4 class="title pb-2 text-xl truncate">{post.data.title}</h4>
+											{
+												post.data.tags?.slice(0, 3).map(tag => 
+													<Pill text={tag} backgroundColour={tagsColoursMap.get(tag)?.backgroundColour} textColour={tagsColoursMap.get(tag)?.textColour} />)
+											}
+											<p class="date">
+												<FormattedDate date={post.data.pubDate} />
+												{
+													import.meta.env.DEV && post.data.status !== 'published' &&
 														<Pill text={post.data.status} backgroundColour="bg-yellow-200 text-yellow-900" textColour="text-white" />
-													}
-													</p>
-											<div class="absolute w-40 h-40 dark:bg-purple-500 rounded-full top-1/4 left-3/4 opacity-20 blur-2xl"></div>
+												}
+											</p>
+											<div class="absolute w-40 h-40 dark:bg-purple-500 rounded-full top-1/4 left-3/4 opacity-20 blur-2xl" class:list={["dark:" + tagsColoursMap.get(post.data.tags[0])!.backgroundColour]}></div>
 										</div>
 									</a>
 								</li>

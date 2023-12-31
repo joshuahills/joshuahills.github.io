@@ -1,15 +1,15 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
-
+import Header from '../components/Header.astro';
+import Pill from '../components/Pill.astro';
+import { tagsColoursMap } from '../pages/blog/tag-colour-map';
 import '../styles/blog.css';
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, author, status } = Astro.props;
-
+const { title, description, pubDate, updatedDate, author, status, tags } = Astro.props;
 ---
 
 <html lang="en">
@@ -79,7 +79,14 @@ const { title, description, pubDate, updatedDate, author, status } = Astro.props
 								}
 							</div>
 							<h1>{title}</h1>
-							<div class="italic author pb-2">By {author}</div>
+							{
+								tags.map((tag) =>
+									<a href=`/blog/tags/${tag}` class="no-underline">
+										<Pill text={tag} backgroundColour={tagsColoursMap.get(tag)?.backgroundColour} textColour={tagsColoursMap.get(tag)?.textColour} />
+									</a>
+								)
+							}
+							<div class="italic author py-2">By {author}</div>
 							<hr />
 						</div>
 						<slot />
