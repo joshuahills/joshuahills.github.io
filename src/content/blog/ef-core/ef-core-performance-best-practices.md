@@ -17,7 +17,7 @@ This should go without saying, but it's easy to miss when you're in a hurry. I r
 
 - Make sure the query doesn't include any unexpected `JOIN`s. If it does, you probably have a redundant `.Include()` or `.ThenInclude()` somewhere in your query, or are using a property on related entity that perhaps you don't need. Unnecessary `JOIN`s can cripple your database at load!
 - Ensure there are no unnecessary properties being `SELECT`ed. I'll talk more about this later, but make sure you only `SELECT` what you need.
-- If you do have a complicated query that has more than one `JOIN` in the generated SQL, EF Core will (by default) log a warning message saying that it may not be the most efficient query. And it's sometimes right. You can get better performance by splitting the query up manually, or by letting EF Core do it for you with `.AsSplitQuery()`. It depends though, you should always benchmark each case to determine what is most efficient.
+- If you do have a complicated query that contains more than one collection navigation, EF Core will (by default) log a warning message saying that it may not be the most efficient query. And it's sometimes right. You might get better performance by splitting the query up manually, or by letting EF Core do it for you with `.AsSplitQuery()`. It depends though, you should always benchmark each case to determine what is most efficient.
 
 ## Don't use lazy-loading
 
@@ -168,9 +168,9 @@ So be sure to use projection liberally to ensure EF Core will only get the prope
 Some more tips that I want to write more about in the future:
 
 - Use pagination instead of grabbing all entities. This requires slightly more complicated frontend logic but is well worth it.
-- Don't be afraid to rewrite queries. If EF Core generates SQL that leads to your database not using an index, try rewriting it. You can now write raw SQL in EF Core to give you even more control of what EF Core sends to your DB.
+- Don't be afraid to rewrite queries. If EF Core generates inefficient SQL, try rewriting it. You can now write raw SQL in EF Core to give you even more control of what EF Core sends to your DB.
 - [Compiled queries](https://learn.microsoft.com/en-us/ef/core/performance/advanced-performance-topics?tabs=with-di%2Cexpression-api-with-constant#compiled-queries) means EF Core can convert LINQ to SQL at compile time, rather than during runtime. This reduces the overhead spent generating common queries over-and-over again with potentially significant performance gains. I've found this works best with very simple queries so far, hopefully the EF Core team invest more as this would be an excellent feature for complicated queries.
-- Parameterize queries so EF Core caches the query plan and reuses it.
+- Parameterize queries so EF Core can cache the query plan and reuse it.
 - In high throughput applications, [pooled DbContexts](https://learn.microsoft.com/en-us/ef/core/performance/advanced-performance-topics?tabs=with-di%2Cexpression-api-with-constant#dbcontext-pooling) can reduce the overhead of instantiating a new DbContext many times per second by creating them at start-up, using one from a pool and then returning it to the pool for reuse.
 
 ## Final thoughts
