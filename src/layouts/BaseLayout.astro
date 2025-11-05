@@ -1,4 +1,6 @@
 ---
+import '../styles/global.css';
+
 interface Props {
   title: string;
   description?: string;
@@ -15,7 +17,6 @@ const { title, description = "Josh Hills - .NET software engineer based in the U
     <meta name="description" content={description} />
     <meta name="author" content="Josh Hills" />
     <title>{title}</title>
-    <link rel="stylesheet" href="/src/styles/global.css" />
   </head>
   <body class="font-mono bg-custom-bg text-custom-text overflow-x-hidden">
     <slot />
