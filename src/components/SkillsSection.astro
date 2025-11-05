@@ -1,0 +1,45 @@
+---
+const skillCategories = [
+  {
+    category: "Languages",
+    skills: ["C#", "TypeScript", "C++", "Go"]
+  },
+  {
+    category: "Frameworks",
+    skills: [".NET", "Angular", "Node.js"]
+  },
+  {
+    category: "Databases",
+    skills: ["SQL Server", "Cassandra"]
+  },
+  {
+    category: "DevOps, Cloud & Tooling",
+    skills: ["Azure", "Docker", "Git", "Aspire"]
+  },
+  {
+    category: "Other",
+    skills: ["FFmpeg", "ActiveMQ Artemis"]
+  }
+];
+---
+
+<section id="skills" class="mb-24">
+  <h2 class="font-mono font-bold uppercase tracking-tighter text-[clamp(1.5rem,4vw,2.5rem)] text-custom-primary mb-6 relative inline-block">Tech Stack</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+    {skillCategories.map((category) => (
+      <div class="skill-category">
+        <h3 class="text-sm font-bold uppercase tracking-wider text-custom-secondary mb-4 border-b-2 border-custom-secondary pb-2">
+          {category.category}
+        </h3>
+        <div class="flex flex-wrap gap-2">
+          {category.skills.map((skill) => (
+            <div class="skill-tag relative text-center font-bold uppercase text-xs overflow-hidden bg-transparent border-2 border-custom-accent px-3 py-2 transition-all duration-300 hover:text-custom-bg">
+              {skill}
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

@@ -1,0 +1,46 @@
+---
+const experiences = [
+  {
+    year: "2023 - Present",
+    title: "Software Engineer",
+    company: "Telent",
+    bullets: [
+      "Owned deployments to business-critical distributed systems, worked with ops team to introduce a staging process that cut downtime to near zero.",
+      "Scaled a monolithic camera analysis application into a distributed scalable system to handle 10x capacity.",
+      "Presented sprint accomplishments to internal and external stakeholders, effectively showcasing achievements and communicating progress.",
+      "Developed a proof-of-concept to convert RTSP streams into WebRTC, enabling low-latency playback of CCTV footage in web browsers, now being integrated into existing applications.",
+      "Drove knowledge-sharing through Community of Practice sessions leading to adoption of gRPC and improved practices. Mentored graduates in code quality and engineering practices.",
+      "Department subject-matter expert for video processing & authentication."
+    ]
+  },
+  {
+    year: "2021 - 2023",
+    title: "Graduate Software Engineer",
+    company: "Telent",
+    bullets: [
+      "Developed full-stack features across several products using C#, .NET, Angular, TypeScript, Microsoft SQL Server, Entity Framework.",
+      "Resolved critical performance bottlenecks, cutting a hot path database query from 10 seconds down to 200ms, resulting in a much improved user experience.",
+      "Spearheaded the implementation of Microsoft Entra ID (Azure AD) single-sign-on authentication, coordinating with the IT and Cybersecurity teams to ensure a secure integration.",
+      "Upgraded legacy applications from .NET Framework to .NET 6+, including migration from Entity Framework 6 to EF Core.",
+    ]
+  }
+];
+---
+
+<section class="mb-24">
+  <h2 class="font-mono font-bold uppercase tracking-tighter text-[clamp(1.5rem,4vw,2.5rem)] text-custom-primary mb-6 relative inline-block">Experience</h2>
+  <div class="timeline relative mt-8 pl-8">
+    {experiences.map((exp) => (
+      <div class="timeline-item relative mb-12 pl-8">
+        <div class="text-sm text-custom-secondary font-bold uppercase mb-2 tracking-widest">{exp.year}</div>
+        <div class="text-xl text-custom-primary mb-2">{exp.title}</div>
+        <div class="text-custom-text mb-2">{exp.company}</div>
+        <ul class="list-disc list-outside ms-4">
+          {exp.bullets.map((bullet) => (
+            <li class="leading-relaxed text-custom-muted">{bullet}</li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+</section>

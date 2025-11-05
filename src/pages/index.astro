@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SkillsSection from '../components/SkillsSection.astro';
+import ExperienceSection from '../components/ExperienceSection.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+
+const exp = new Date().getFullYear() - new Date(2021, 8).getFullYear();
+
+const commitHash = import.meta.env.PUBLIC_COMMIT_HASH || 'dev';
+const fullCommitHash = import.meta.env.PUBLIC_FULL_COMMIT_HASH || commitHash;
+---
+
+<BaseLayout title="Josh Hills - Software Engineer">
+  <div class="max-w-screen-xl mx-auto px-8">
+    <!-- Hero Section -->
+    <section class="min-h-screen flex flex-col justify-center relative py-16 md:py-32">
+      <h1 class="font-mono font-bold uppercase tracking-tighter leading-[0.9] mb-4 text-[clamp(2.5rem,8vw,5rem)]">
+        <span class="glitch relative inline-block">Josh Hills</span>
+      </h1>
+      <p class="mb-8 font-mono text-[clamp(1rem,2.5vw,1.5rem)] text-custom-muted leading-none">
+        Software Engineer
+        <span class="font-bold text-custom-accent">//</span>
+        Leicestershire, UK
+        <span class="cursor-blink inline-block w-[0.6em] h-[1em] bg-custom-primary ml-1 align-text-bottom translate-y-[-0.1em]"></span>
+      </p>
+
+      <div class="card relative bg-custom-surface border-[4px] border-custom-primary p-8 mb-8 transition-all duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[8px_8px_0_#00ff88]">
+        <p class="text-lg leading-relaxed mb-6">
+          Hey there! I'm Josh, a software engineer with {exp} years of professional experience crafting scalable applications
+          and solving complex technical challenges. I specialise in .NET, TypeScript, and distributed systems.
+        </p>
+        <p class="text-muted text-gray-400">
+          When I'm not wrestling with microservices or optimizing database queries, you might find me experimenting with
+          real-time video processing or walking in muddy English fields.
+        </p>
+      </div>
+
+      <SocialLinks />
+
+      <!-- Scroll Indicator -->
+      <a href="#skills" id="scroll-indicator" class="scroll-indicator absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-custom-accent hover:text-custom-primary transition-all duration-500 group cursor-pointer">
+        <span class="scroll-text"/>
+        <div class="relative w-6 h-10 border-2 border-current rounded-full p-1">
+          <div class="w-1.5 h-1.5 bg-current rounded-full mx-auto"></div>
+        </div>
+        <svg class="w-4 h-4 animate-bounce scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/>
+        </svg>
+      </a>
+    </section>
+
+    <script>
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const href = this.getAttribute('href');
+
+          if (href === '#top') {
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth'
+            });
+          } else {
+            const target = document.querySelector(href);
+            if (target) {
+              target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }
+          }
+        });
+      });
+
+      // Flip scroll indicator based on scroll position
+      const scrollIndicator = document.getElementById('scroll-indicator');
+      const scrollText = scrollIndicator?.querySelector('.scroll-text') as HTMLElement | null;
+
+      window.addEventListener('scroll', () => {
+        if (!scrollIndicator || !scrollText) return;
+
+        const scrolled = window.scrollY > window.innerHeight * 0.5;
+
+        if (scrolled) {
+          scrollIndicator.style.transform = 'translateX(-50%) rotate(180deg)';
+          scrollIndicator.setAttribute('href', '#top');
+        } else {
+          scrollIndicator.style.transform = 'translateX(-50%) rotate(0deg)';
+          scrollIndicator.setAttribute('href', '#skills');
+        }
+      });
+    </script>
+
+    <!-- Skills Section -->
+    <SkillsSection />
+
+    <!-- Experience Section -->
+    <ExperienceSection />
+
+    <!-- Footer -->
+    <footer class="relative py-12 text-custom-muted border-t-2 mt-16" style="border-color: var(--color-surface);">
+      <div class="text-center">
+        <p>© {new Date().getFullYear()} Josh Hills.</p>
+        <p class="mt-2 text-sm">
+          Built with Astro.
+        </p>
+      </div>
+      <div class="absolute bottom-4 left-4 text-xs font-mono opacity-50 hover:opacity-100 transition-opacity">
+        <a
+          href={`https://github.com/joshuahills/joshuahills.github.io/commit/${fullCommitHash}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-custom-muted hover:text-custom-accent transition-colors"
+        >
+          {commitHash}
+        </a>
+      </div>
+    </footer>
+  </div>
+</BaseLayout>
