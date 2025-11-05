@@ -54,7 +54,9 @@ const fullCommitHash = import.meta.env.PUBLIC_FULL_COMMIT_HASH || commitHash;
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
           e.preventDefault();
-          const href = this.getAttribute('href');
+          const href = anchor.getAttribute('href');
+
+          if (!href) return;
 
           if (href === '#top') {
             window.scrollTo({
