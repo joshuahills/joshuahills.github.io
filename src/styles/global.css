@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Keyframe animations - must be outside layers */
 @keyframes gradientShift {
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.8; transform: scale(1.1); }
@@ -37,7 +36,6 @@
     --border-thicc: 4px;
   }
 
-  /* Animated gradient background - can't do with Tailwind */
   body::before {
     content: '';
     position: fixed;
@@ -53,7 +51,6 @@
     animation: gradientShift 20s ease infinite;
   }
 
-  /* H2 underline animation - can't do with Tailwind */
   h2::after {
     content: '';
     position: absolute;
@@ -65,7 +62,6 @@
     animation: underlineGrow 0.6s ease-out;
   }
 
-  /* Link hover underline - can't do with Tailwind */
   a::after {
     content: '';
     position: absolute;
@@ -83,7 +79,6 @@
 }
 
 @layer components {
-  /* Glitch gradient text effect */
   .glitch {
     background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
     -webkit-background-clip: text;
@@ -92,12 +87,10 @@
     animation: glitch 3s infinite;
   }
 
-  /* Cursor blink */
   .cursor-blink {
     animation: blink 1s infinite;
   }
 
-  /* Card geometric shape and accent corner */
   .card {
     clip-path: polygon(
       0 0,
@@ -119,7 +112,6 @@
     background: var(--color-secondary);
   }
 
-  /* Skill tag hover slide effect */
   .skill-tag::before {
     content: '';
     position: absolute;
@@ -136,7 +128,6 @@
     left: 0;
   }
 
-  /* Timeline connector line */
   .timeline::before {
     content: '';
     position: absolute;
@@ -147,7 +138,6 @@
     background: linear-gradient(180deg, var(--color-primary), var(--color-secondary));
   }
 
-  /* Timeline dot markers */
   .timeline-item::before {
     content: '';
     position: absolute;
@@ -161,7 +151,6 @@
     box-shadow: 0 0 0 4px var(--color-surface);
   }
 
-  /* LinkedIn button expanding circle effect */
   .linkedin-btn::after {
     display: none;
   }
