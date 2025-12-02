@@ -14,22 +14,28 @@ const fullCommitHash = import.meta.env.PUBLIC_FULL_COMMIT_HASH || commitHash;
   <div class="max-w-screen-xl mx-auto px-8">
     <!-- Hero Section -->
     <section class="min-h-screen flex flex-col justify-center relative py-16 md:py-32">
-      <h1 class="font-mono font-bold uppercase tracking-tighter leading-[0.9] mb-4 text-[clamp(2.5rem,8vw,5rem)]">
-        <span class="glitch relative inline-block">Josh Hills</span>
+      
+      <h1 class="font-sans font-black uppercase tracking-tighter leading-[0.85] mb-8 text-[clamp(4rem,12vw,8rem)] relative z-10" aria-label="Josh Hills">
+        <span class="block text-outline absolute top-1 left-1 opacity-30 select-none pointer-events-none" aria-hidden="true">Josh</span>
+        <span class="block text-transparent bg-clip-text bg-gradient-to-r from-white to-white/50 relative z-10">Josh</span>
+        <span class="block text-outline absolute top-[0.85em] left-1 opacity-30 select-none pointer-events-none" aria-hidden="true">Hills</span>
+        <span class="block text-transparent bg-clip-text bg-gradient-to-r from-custom-primary to-custom-secondary relative z-10 glitch" data-text="Hills">Hills</span>
       </h1>
-      <p class="mb-8 font-mono text-[clamp(1rem,2.5vw,1.5rem)] text-custom-muted leading-none">
+      
+      <p class="mb-16 font-mono text-[clamp(1rem,2vw,1.25rem)] text-custom-muted leading-none flex items-center gap-4">
+        <span class="w-12 h-[1px] bg-custom-secondary"></span>
         Software Engineer
-        <span class="font-bold text-custom-accent">//</span>
+        <span class="text-custom-accent">//</span>
         East Mids, UK
-        <span class="cursor-blink inline-block w-[0.6em] h-[1em] bg-custom-primary ml-1 align-text-bottom translate-y-[-0.1em]"></span>
       </p>
 
-      <div class="card relative bg-custom-surface border-[4px] border-custom-primary p-8 mb-8 transition-all duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[8px_8px_0_#00ff88]">
-        <p class="text-lg leading-relaxed mb-6">
-          Hey there! I'm Josh, a software engineer with {exp} years of professional experience crafting scalable applications
-          and solving complex technical challenges. I specialise in .NET, TypeScript, and distributed systems.
+      <div class="glass-panel p-8 md:p-10 mb-12 rounded-2xl border border-white/5 hover:border-custom-primary/30 transition-all duration-500 group relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-custom-primary/5 to-custom-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <p class="text-lg md:text-xl leading-relaxed mb-6 text-custom-text font-light relative z-10">
+          Hey there! I'm Josh, a software engineer with <span class="text-custom-primary font-bold text-glow">{exp} years</span> of professional experience crafting scalable applications
+          and solving complex technical challenges. I specialise in <span class="text-custom-secondary font-medium">.NET</span>, <span class="text-custom-secondary font-medium">TypeScript</span>, and <span class="text-custom-secondary font-medium">distributed systems</span>.
         </p>
-        <p class="text-muted text-gray-400">
+        <p class="text-custom-muted font-light relative z-10">
           When I'm not wrestling with microservices or optimizing database queries, you might find me experimenting with
           real-time video processing or walking in muddy English fields.
         </p>

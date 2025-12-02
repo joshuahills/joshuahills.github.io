@@ -17,9 +17,12 @@ const { title, description = "Josh Hills - .NET software engineer based in the U
     <meta name="description" content={description} />
     <meta name="author" content="Josh Hills" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <title>{title}</title>
   </head>
-  <body class="font-mono bg-custom-bg text-custom-text overflow-x-hidden">
+  <body class="font-sans bg-custom-bg text-custom-text overflow-x-hidden">
     <slot />
   </body>
 </html>
